@@ -5,4 +5,4 @@ interface AuthContext {
   application?: string
 }
 
-export default function authorize(_client: ClientToken, _context: AuthContext, _permission: string) {}
+export default async function authorize(_client: ClientToken, _context: AuthContext, _permission: string) {}

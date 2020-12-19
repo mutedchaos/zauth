@@ -3,10 +3,8 @@ import { base } from './base'
 export const authorizeAPI = {
   url: base
     .declareGetAPI('/authenticate/url/v1')
-    .query(['client_id', 'nonce', 'scope'] as const)
+    .query(['client_id', 'nonce', 'scope', 'redirect_uri'] as const)
     .optionalQuery([
-      'tenantId',
-      'redirect_uri',
       'state',
       'prompt',
       'display',

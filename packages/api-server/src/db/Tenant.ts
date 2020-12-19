@@ -1,5 +1,6 @@
 import { Field, InputType, ObjectType } from 'type-graphql'
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Application } from './Application'
 import { createRepositoryProxy } from './repoProxy'
 
 @ObjectType()
@@ -31,6 +32,13 @@ export class Tenant extends Tenant_Creatable {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => String)
   public id: string
+
+  @OneToMany(() => Application, (other) => other.tenant)
+  public applications: Application[]
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  public openIDLoginURL?: string
 }
 
 export const tenants = createRepositoryProxy(Tenant)
