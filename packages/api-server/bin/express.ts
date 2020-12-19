@@ -2,7 +2,7 @@ import 'dotenv/config'
 import 'reflect-metadata'
 
 import { createApp } from '../src/app'
-import { ApolloServer } from 'apollo-server'
+import { ApolloServer } from 'apollo-server-express'
 import { buildSchema } from 'type-graphql'
 import { connectToDatabase } from '../src/db'
 import { resolvers } from '../src/gql/resolvers'

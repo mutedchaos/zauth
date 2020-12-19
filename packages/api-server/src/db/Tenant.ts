@@ -1,5 +1,6 @@
-import { Column, Entity, getConnection, Index, PrimaryGeneratedColumn } from 'typeorm'
 import { Field, InputType, ObjectType } from 'type-graphql'
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm'
+import { createRepositoryProxy } from './repoProxy'
 
 @ObjectType()
 @InputType()
@@ -32,4 +33,4 @@ export class Tenant extends Tenant_Creatable {
   public id: string
 }
 
-export const tenants = getConnection().getRepository(Tenant)
+export const tenants = createRepositoryProxy(Tenant)
