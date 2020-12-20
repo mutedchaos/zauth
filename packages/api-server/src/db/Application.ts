@@ -32,7 +32,7 @@ export class Application extends Application_Creatable {
   public tenantId: string
 
   @ManyToOne(() => Tenant, (other) => other.applications)
-  public tenant: Tenant
+  public tenant: Promise<Tenant>
 
   @Column({ nullable: true })
   @Field({ nullable: true })

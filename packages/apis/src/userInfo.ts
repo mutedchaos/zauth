@@ -2,7 +2,13 @@ import { base } from './base'
 
 export const userInfoAPIs = {
   getUserInfo: base.declareGetAPI('/userInfo/v1').response<{
-    id: string
-    name: string
+    sub: string
+    givenName?: string
+    familyName?: string
+    phone?: string
+    email?: string
+    customFields: {
+      [key: string]: string
+    }
   }>(),
 }

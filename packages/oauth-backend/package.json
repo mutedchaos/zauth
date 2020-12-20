@@ -1,0 +1,19 @@
+{
+  "name": "@vicion/zauth-oauth-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node bin/www",
+    "dev": "ts-node-dev bin/www"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.9"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

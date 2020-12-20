@@ -34,7 +34,7 @@ export class Tenant extends Tenant_Creatable {
   public id: string
 
   @OneToMany(() => Application, (other) => other.tenant)
-  public applications: Application[]
+  public applications: Promise<Application[]>
 
   @Column({ nullable: true })
   @Field({ nullable: true })

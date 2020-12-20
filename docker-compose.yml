@@ -9,5 +9,44 @@ services:
     env_file: ./.postgres_env
     environment:
       POSTGRES_USER: zauth
+  api-server:
+    build:
+      context: .
+      target: api-server-dev
+    volumes:
+      - ./packages/api-server/src:/app/packages/api-server/src
+      - ./packages/api-server/bin:/app/packages/api-server/bin
+    ports:
+      - 4002:3000
+  management:
+    build:
+      context: .
+      target: management-frontend-dev
+    ports:
+      - 4000:3000
+    volumes:
+      - ./packages/management-frontend/src:/app/packages/management-frontend/src
+    environment:
+      PORT: 3000
+      REACT_APP_API_ROOT: 'http://localhost:4002'
+  oauth:
+    build:
+      context: .
+      target: oauth-frontend-dev
+    ports:
+      - 4001:3000
+    volumes:
+      - ./packages/oauth-frontend/src:/app/packages/oauth-frontend/src
+    environment:
+      PORT: 3000
+      REACT_APP_API_ROOT: 'http://api-server:3000'
+      PROXY_TO: 'http://oauth-backend:3000'
+  oauth-backend:
+    build:
+      context: .
+      target: oauth-backend-dev
+    volumes:
+      - ./packages/oauth-backend/src:/app/packages/oauth-backend/src
+      - ./packages/oauth-backend/bin:/app/packages/oauth-backend/bin
 volumes:
   pgdata:
